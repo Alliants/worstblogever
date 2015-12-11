@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+development:
+  <<: *default
+  database: worst_blog_ever_dev
+test:
+  <<: *default
+  database: worst_blog_ever_test
+production:
+  <<: *default
+  database: worst_blog_ever_production
+  username: worst_blog_ever
+  password: <%= ENV['WORST_BLOG_EVER_DATABASE_PASSWORD'] %>
