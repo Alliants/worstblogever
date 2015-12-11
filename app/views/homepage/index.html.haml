@@ -1,2 +1,18 @@
-%h1 Homepage#index
-%p Find me in app/views/homepage/index.html.haml
+.container-fluid
+  .row
+    .col-xs-12
+      %h1
+        Hello from host
+        = "'" + @hostname + "'"
+
+  .row
+    .col-xs-12
+      = form_for @post do |f|
+        %div
+          = f.label :title
+          = f.text_field :title
+        %div
+          = f.label :body
+          = f.text_area :body
+        %div
+          = f.submit "Submit"

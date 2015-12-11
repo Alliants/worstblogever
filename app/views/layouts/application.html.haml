@@ -10,5 +10,11 @@
     = stylesheet_link_tag    'application', media: 'all'
     = csrf_meta_tags
   %body
+    .container-fluid
+      - if flash[:notice].present?
+        .alert.alert-info
+          %button.close{type: 'button', data: {dismiss: 'alert'}}
+            %span &times;
+          %strong= flash[:notice]
     = yield
     = javascript_include_tag 'application'
