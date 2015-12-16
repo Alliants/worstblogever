@@ -17,4 +17,7 @@
             %span &times;
           %strong= flash[:notice]
     = yield
+    .container-fluid
+      Code revision:
+      = `git rev-parse HEAD`[0..7]
     = javascript_include_tag 'application'
