@@ -1,0 +1,8 @@
+---
+hosts: localhost
+sudo: yes
+tasks:
+  - name: "Install packages"
+    yum: { name: "{{item}}", state: present }
+    with_items:
+      - "@Development tools"
