@@ -1,8 +1,17 @@
 ---
-hosts: localhost
-sudo: yes
-tasks:
-  - name: "Install packages"
-    yum: { name: "{{item}}", state: present }
-    with_items:
-      - "@Development tools"
+- hosts: localhost
+  sudo: yes
+  tasks:
+    - name: "Enable EPEL repo"
+      ini_file: { dest: /etc/yum.repos.d/epel.repo, section: epel, option: enabled, value: 1, backup: yes }
+      tags: epel
+
+    - name: "Update all packages"
+      yum: { update_cache: yes, name: "*", state: latest }
+
+    - name: "Install packages"
+      yum: { name: "{{item}}", state: latest }
+      with_items:
+        - bash-completion
+        - "@Development tools"
+        - git
