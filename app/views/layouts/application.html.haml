@@ -16,8 +16,16 @@
           %button.close{type: 'button', data: {dismiss: 'alert'}}
             %span &times;
           %strong= flash[:notice]
+
     = yield
+
     .container-fluid
-      Code revision:
-      = `git rev-parse HEAD`[0..7]
+      .row
+        .col-xs-12
+          Code revision:
+          = `git rev-parse HEAD`[0..7]
+          %br
+          Server hostname:
+          = "'" + hostname + "'"
+
     = javascript_include_tag 'application'

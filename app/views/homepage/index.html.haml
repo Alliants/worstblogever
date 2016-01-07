@@ -1,18 +1,22 @@
-.container-fluid
-  .row
-    .col-xs-12
-      %h1
-        Hello from host
-        = "'" + @hostname + "'"
+.container-fluid.homepage
 
   .row
     .col-xs-12
-      = form_for @post do |f|
-        %div
-          = f.label :title
-          = f.text_field :title
-        %div
-          = f.label :body
-          = f.text_area :body
-        %div
-          = f.submit "Submit"
+      .h1= @post.title
+      .div= @post.body
+      %a.toggle-edit{href: "#"} Edit
+
+  .row.edit-post
+    .col-xs-12
+      = form_for @post, html: {class: "form-horizontal"} do |f|
+        .form-group
+          = f.label :title, class: "control-label col-sm-1"
+          .col-sm-11
+            = f.text_field :title, class: "form-control"
+        .form-group
+          = f.label :body, class: "control-label col-sm-1"
+          .col-sm-11
+            = f.text_area :body, class: "form-control"
+        .form-group
+          .col-sm-offset-1.col-sm-11
+            = f.button "Submit", type: "submit", class: "btn btn-primary"
