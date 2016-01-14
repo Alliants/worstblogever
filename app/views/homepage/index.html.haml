@@ -3,7 +3,7 @@
   .row
     .col-xs-12
       .h1= @post.title
-      .div= @post.body
+      .div= @post.formatted_body.html_safe
       %a.toggle-edit{href: "#"} Edit post
 
   .row.edit-post
