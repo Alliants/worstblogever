@@ -10,18 +10,20 @@
     = stylesheet_link_tag    'application', media: 'all'
     = csrf_meta_tags
   %body
-    .container-fluid
-      - if flash[:notice].present?
-        .alert.alert-info
-          %button.close{type: 'button', data: {dismiss: 'alert'}}
-            %span &times;
-          %strong= flash[:notice]
+    .container
+      .row
+        .col-sm-offset-3.col-sm-6
+          - if flash[:notice].present?
+            .alert.alert-info
+              %button.close{type: 'button', data: {dismiss: 'alert'}}
+                %span &times;
+              %strong= flash[:notice]
 
     = yield
 
-    .container-fluid
+    .container
       .row
-        .col-xs-12
+        .col-sm-offset-3.col-sm-6
           Code revision:
           = `git rev-parse HEAD`[0..7]
           %br
