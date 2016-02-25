@@ -2,5 +2,8 @@
 
 set -e
 
-cd /srv/app
-bin/rake db:create db:migrate &> /tmp/init-instance.log
+eval $(/usr/local/bin/get-my-tags)
+
+if [ $instance_tag_env == 'dev' ]; then
+        su -s /bin/bash -l -c 'cd /srv/app && bin/bundle exec rake db:create db:migrate db:seed &> /tmp/init-instance.log' appuser
+fi
