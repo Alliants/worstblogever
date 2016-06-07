@@ -1,3 +1,5 @@
 #!/bin/bash -l
 
+set -e
+cd "${APP_DIR}"
 exec bundle exec puma -b tcp://127.0.0.1:3000 -e production -w $(( $(num-cpus)*2 )) --preload
